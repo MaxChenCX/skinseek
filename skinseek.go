@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"strings"
 )
 
 var (
@@ -28,7 +29,7 @@ func main() {
 	fmt.Println(" Minecraft")
 	fmt.Println(" ╔═╗┬┌─┬┌┐┌  ╔═╗┌─┐┌─┐┬┌─ ")
 	fmt.Println(" ╚═╗├┴┐││││  ╚═╗├┤ ├┤ ├┴┐ ")
-	fmt.Println(" ╚═╝┴ ┴┴┘└┘  ╚═╝└─┘└─┘┴ ┴ v1.0")
+	fmt.Println(" ╚═╝┴ ┴┴┘└┘  ╚═╝└─┘└─┘┴ ┴ v1.1")
 	fmt.Println("")
 
 	flag.Parse()
@@ -40,6 +41,8 @@ func main() {
 	if uuid == "" {
 		UUIDp := getUUID(name)
 		uuid = UUIDp.UUID
+	} else {
+		uuid = strings.ReplaceAll(uuid, "-", "")
 	}
 	Sessp := getSessionPro(uuid)
 	Skinp := getSkinPro(Sessp.Properties[0].Value)
